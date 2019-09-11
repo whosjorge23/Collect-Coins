@@ -9,9 +9,13 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import Firebase
+import GoogleMobileAds
 
 class GameViewController: UIViewController {
 
+    var interstitial: GADInterstitial!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,24 +31,23 @@ class GameViewController: UIViewController {
             
             view.ignoresSiblingOrder = true
             
-            view.showsFPS = true
-            view.showsNodeCount = true
+            view.showsFPS = false
+            view.showsNodeCount = false
         }
-    }
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6509077530171354/7729951095")
+        let request = GADRequest()
+        interstitial.load(request)
+        
+        self.interstitial.present(fromRootViewController: self)
     }
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func showInterstitialAd() {
+        //self.interstitial.present(fromRootViewController: self)
+        SmartAdMob.shared.showInterstitialAd(on: self, withFrequency: .preset)
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-6509077530171354~2897067440</string>
+	<key>CLIENT_ID</key>
+	<string>74106865885-5m1i9vu10ep51r7pf314kp8onab0hmlb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.74106865885-5m1i9vu10ep51r7pf314kp8onab0hmlb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBrvf86HImhjVw2VJ2o9q-QcyvcZ4N7ONo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>74106865885</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.westcostyle.Collect-Coins</string>
+	<key>PROJECT_ID</key>
+	<string>collect-coins-6fc3c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>collect-coins-6fc3c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:74106865885:ios:0cbe35c03e2d4cb4</string>
+	<key>DATABASE_URL</key>
+	<string>https://collect-coins-6fc3c.firebaseio.com</string>
+</dict>
+</plist>

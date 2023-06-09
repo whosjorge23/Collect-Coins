@@ -11,7 +11,7 @@ import GameplayKit
 import Firebase
 import GoogleMobileAds
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene2: SKScene, SKPhysicsContactDelegate {
     
     var coinMan : SKSpriteNode?
     var coinTimer : Timer?
@@ -46,11 +46,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         var coinManRun : [SKTexture] = []
         
-        for number in 0...3 {
-            coinManRun.append(SKTexture(imageNamed: "runs_0\(number)"))
+        for number in 0...42 {
+            coinManRun.append(SKTexture(imageNamed: "run_0\(number)"))
         }
         
-        coinMan?.run(SKAction.repeatForever(SKAction.animate(with: coinManRun, timePerFrame: 0.08)))
+        coinMan?.run(SKAction.repeatForever(SKAction.animate(with: coinManRun, timePerFrame: 0.02)))
         
 //        ground = childNode(withName: "ground") as? SKSpriteNode
 //        ground?.physicsBody?.categoryBitMask = groundAndCeilCategory
@@ -102,7 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createCoin() {
         
-        let diamondArray = ["diamond_01", "diamond_02"]
+        let diamondArray = ["mana"]
         
         let randomDiamond = diamondArray[Int(arc4random_uniform(UInt32(diamondArray.count)))]
         
@@ -114,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coin.physicsBody?.contactTestBitMask = coinManCategory
         coin.physicsBody?.collisionBitMask = 0
         
-        let sizingGrass = SKSpriteNode(imageNamed: "floor")
+        let sizingGrass = SKSpriteNode(imageNamed: "grass")
         
         let maxY = size.height / 2 - coin.size.height / 2
         let minY = -size.height / 2 + coin.size.height / 2 + sizingGrass.size.height
@@ -133,7 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createBomb() {
         
-        let enemyArray = ["enemy", "enemy2"]
+        let enemyArray = ["spider"]
         
         let randomEnemy = enemyArray[Int(arc4random_uniform(UInt32(enemyArray.count)))]
         
@@ -145,7 +145,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bomb.physicsBody?.contactTestBitMask = coinManCategory
         bomb.physicsBody?.collisionBitMask = 0
         
-        let sizingGrass = SKSpriteNode(imageNamed: "floor")
+        let sizingGrass = SKSpriteNode(imageNamed: "grass")
         
         let maxY = size.height / 2 - bomb.size.height / 2 + sizingGrass.size.height
         let minY = -size.height / 2 + bomb.size.height / 2
@@ -159,7 +159,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if score > 0 && score <= 10 {
             fast = 4
-        }else if score > 10 && score <= 50 {
+        }else if score > 10 && score <= 20 {
             fast = 3
         }else if score > 50 && score <= 100 {
             fast = 2
@@ -176,12 +176,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createGrass() {
         
-        let sizingGrass = SKSpriteNode(imageNamed: "floor")
+        let sizingGrass = SKSpriteNode(imageNamed: "grass")
         let numberOfGrass = Int(size.width / sizingGrass.size.width) + 1
         
         for number in 0...numberOfGrass {
             
-            let grass = SKSpriteNode(imageNamed: "floor")
+            let grass = SKSpriteNode(imageNamed: "grass")
             grass.physicsBody = SKPhysicsBody(rectangleOf: grass.size)
             grass.physicsBody?.categoryBitMask = groundAndCeilCategory
             grass.physicsBody?.collisionBitMask = coinManCategory
@@ -211,7 +211,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             score += 1
             scoreLabel?.text = "Score: \(score)"
-            scoreLabel?.fontColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
         
         if contact.bodyB.categoryBitMask == coinCategory {
@@ -220,7 +219,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             score += 1
             scoreLabel?.text = "Score: \(score)"
-            scoreLabel?.fontColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
         
         if contact.bodyA.categoryBitMask == bombCategory {
@@ -249,7 +247,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         yourScoreLabel = SKLabelNode(text: "Your Score:")
         yourScoreLabel?.position = CGPoint(x: 0, y: 200)
         yourScoreLabel?.fontSize = 100
-        yourScoreLabel?.fontColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        yourScoreLabel?.fontColor = #colorLiteral(red: 0.00392069295, green: 0.00392218167, blue: 0.003920496907, alpha: 1)
         yourScoreLabel?.zPosition = 1
         if yourScoreLabel != nil {
             addChild(yourScoreLabel!)
@@ -258,13 +256,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         numberScoreLabel = SKLabelNode(text: "\(score)")
         numberScoreLabel?.position = CGPoint(x: 0, y: 0)
         numberScoreLabel?.fontSize = 200
-        numberScoreLabel?.fontColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        numberScoreLabel?.fontColor = #colorLiteral(red: 0.00392069295, green: 0.00392218167, blue: 0.003920496907, alpha: 1)
         numberScoreLabel?.zPosition = 1
         if numberScoreLabel != nil {
             addChild(numberScoreLabel!)
         }
         
-        let playButton = SKSpriteNode(imageNamed: "playButton")
+        let playButton = SKSpriteNode(imageNamed: "playButton2")
         playButton.position = CGPoint(x: 0, y: -150)
         playButton.name = "play"
         playButton.zPosition = 1

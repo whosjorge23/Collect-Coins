@@ -19,9 +19,13 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let gameArray = ["GameScene", "GameScene2"]
+        
+        let gameRandom = gameArray[Int(arc4random_uniform(UInt32(gameArray.count)))]
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = SKScene(fileNamed: "\(gameRandom)") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
